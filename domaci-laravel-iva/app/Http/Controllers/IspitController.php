@@ -2,11 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\IspitResource;
 use App\Models\Ispit;
 use Illuminate\Http\Request;
 
+
 class IspitController extends Controller
 {
+    public function getAllIspits()
+    {
+        $data = Ispit::join('students', 'students.id', '=', 'ispits.student_id')
+            ->get(['ispits.predmet_id', 'ispits.student_id', 'ispits.Rezultat', 'students.Ime', 'students.Prezime', 'students.Broj indeksa']);
+
+        return $data;
+    }
+
+    public function addIspit()
+    {
+        request()->validate([
+            'predmet_id' => 'required',
+            'student_id' => 'required',
+            'Rezultat' => 'required'
+        ]);
+        return Ispit::create([
+            'predmet_id' => intval(request('predmet_id')),
+            'student_id' => intval(request('student_id')),
+            'Rezultat' => request('Rezultat')
+        ]);
+    }
+
+
     /**
      * Display a listing of the resource.
      */

@@ -7,6 +7,56 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+
+    public function getAllStudents()
+    {
+        return Student::all();
+    }
+
+    public function addStudent()
+    {
+        request()->validate([
+            'Ime' => 'required',
+            'Prezime' => 'required',
+            'Broj indeksa' => 'required',
+        ]);
+        return Student::create([
+            'Ime' => request('Ime'),
+            'Prezime' => request('Prezime'),
+            'Broj indeksa' => request('Broj indeksa'),
+        ]);
+    }
+
+    public function editStudent(Student $student)
+    {
+        request()->validate([
+            'Ime' => 'required',
+            'Prezime' => 'required',
+            'Broj indeksa' => 'required',
+        ]);
+
+        $success = $student->update([
+            'Ime' => request('Ime'),
+            'Prezime' => request('Prezime'),
+            'Broj indeksa' => request('Broj indeksa')
+        ]);
+
+        return [
+            'success' => $success
+        ];
+    }
+
+    public function deleteStudent(Student $student)
+    {
+        $success = $student->delete();
+
+        return [
+            'success' => $success
+        ];
+
+    }
+
+
     /**
      * Display a listing of the resource.
      */
