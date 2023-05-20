@@ -18,7 +18,7 @@ class PredmetFactory extends Factory
     {
         return [
             'Naziv' => $this->faker->sentence($nbWords = 1, $variableNbWords = true),
-            'Opis' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+            'Opis' => $this->faker->paragraph($nbSentences = 1, $variableNbSentences = true),
             'Naziv katedre' => $this->faker->sentence($nbWords = 1, $variableNbWords = true),
         ];
     }

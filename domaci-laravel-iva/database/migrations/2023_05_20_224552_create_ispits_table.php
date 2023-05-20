@@ -11,6 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('ispits', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('predmet_id');
             $table->foreignId('student_id');
             $table->string('Rezultat');
