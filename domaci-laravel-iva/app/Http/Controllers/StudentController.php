@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Http\Resources\StudentResource;
+
 
 class StudentController extends Controller
 {
 
     public function getAllStudents()
     {
-        return Student::all();
+        $students = Student::all();
+        return StudentResource::collection($students);
     }
 
     public function addStudent()
@@ -18,33 +21,15 @@ class StudentController extends Controller
         request()->validate([
             'Ime' => 'required',
             'Prezime' => 'required',
-            'Broj indeksa' => 'required',
+            'BrojIndeksa' => 'required',
         ]);
         return Student::create([
             'Ime' => request('Ime'),
             'Prezime' => request('Prezime'),
-            'Broj indeksa' => request('Broj indeksa'),
+            'BrojIndeksa' => request('BrojIndeksa'),
         ]);
     }
 
-    public function editStudent(Student $student)
-    {
-        request()->validate([
-            'Ime' => 'required',
-            'Prezime' => 'required',
-            'Broj indeksa' => 'required',
-        ]);
-
-        $success = $student->update([
-            'Ime' => request('Ime'),
-            'Prezime' => request('Prezime'),
-            'Broj indeksa' => request('Broj indeksa')
-        ]);
-
-        return [
-            'success' => $success
-        ];
-    }
 
     public function deleteStudent(Student $student)
     {
@@ -86,7 +71,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        return new StudentResource($student);
     }
 
     /**

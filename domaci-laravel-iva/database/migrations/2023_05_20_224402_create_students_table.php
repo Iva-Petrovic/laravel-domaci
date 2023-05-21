@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('Ime');
             $table->string('Prezime');
-            $table->string('Broj indeksa');
+            $table->string('BrojIndeksa');
             $table->timestamps();
         });
     }

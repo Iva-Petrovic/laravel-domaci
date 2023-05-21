@@ -11,10 +11,8 @@ class IspitController extends Controller
 {
     public function getAllIspits()
     {
-        $data = Ispit::join('students', 'students.id', '=', 'ispits.student_id')
-            ->get(['ispits.predmet_id', 'ispits.student_id', 'ispits.Rezultat', 'students.Ime', 'students.Prezime', 'students.Broj indeksa']);
-
-        return $data;
+        $ispits = Ispit::all();
+        return IspitResource::collection($ispits);
     }
 
     public function addIspit()
