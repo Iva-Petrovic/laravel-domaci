@@ -29,6 +29,16 @@ class IspitController extends Controller
         ]);
     }
 
+    public function deleteIspit(Ispit $ispit)
+    {
+        $success = $ispit->delete();
+
+        return [
+            'success' => $success
+        ];
+
+    }
+
 
     /**
      * Display a listing of the resource.

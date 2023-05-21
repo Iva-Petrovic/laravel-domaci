@@ -28,3 +28,4 @@ Route::delete('/students/{student}', [StudentController::class, 'deleteStudent']
 Route::resource('ispits', IspitController::class);
 Route::get('/ispits', [IspitController::class, 'getAllIspits']);
 Route::post('/ispits', [IspitController::class, 'addIspit']);
+Route::delete('/ispits/{ispit}', [IspitController::class, 'deleteIspit']);
