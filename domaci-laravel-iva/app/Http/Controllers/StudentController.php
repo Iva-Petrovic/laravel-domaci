@@ -21,12 +21,12 @@ class StudentController extends Controller
         request()->validate([
             'Ime' => 'required',
             'Prezime' => 'required',
-            'BrojIndeksa' => 'required',
+            'Indeks' => 'required',
         ]);
         return Student::create([
             'Ime' => request('Ime'),
             'Prezime' => request('Prezime'),
-            'BrojIndeksa' => request('BrojIndeksa'),
+            'Indeks' => request('Indeks'),
         ]);
     }
 

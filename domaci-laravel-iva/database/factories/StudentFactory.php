@@ -19,7 +19,7 @@ class StudentFactory extends Factory
         return [
             'Ime' => $this->faker->name(),
             'Prezime' => $this->faker->lastName(),
-            'BrojIndeksa' => $this->faker->numerify('2019-####'),
+            'Indeks' => $this->faker->numerify('2019-####'),
         ];
     }
 }

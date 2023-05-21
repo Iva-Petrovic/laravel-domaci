@@ -17,7 +17,7 @@ class StudentResource extends JsonResource
         return [
             'Ime' => $this->resource->Ime,
             'Prezime' => $this->resource->Prezime,
-            'BrojIndeksa' => $this->resource->BrojIndeksa
+            'Indeks' => $this->resource->Indeks
         ];
     }
 }
