@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/ispits', [IspitController::class, 'addIspit']);
     Route::delete('/ispits/{ispit}', [IspitController::class, 'deleteIspit']);
 
+    Route::post('/logout', [AuthController::class, 'logout']);
+
 });
 
 Route::get('/students', [StudentController::class, 'getAllStudents']);
